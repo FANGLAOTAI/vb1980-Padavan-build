@@ -96,7 +96,7 @@ jobs:
         #格式如下：
         #sed -i '/自定义项/d' .config
         #echo "自定义项=y" >> .config
-        sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV=20200417/g" ./versions.inc
+        sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV=20200418/g" ./versions.inc
         echo '更新版本号时间'
         #########################################################################################
         sudo ./clear_tree
