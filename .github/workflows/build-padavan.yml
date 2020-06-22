@@ -40,8 +40,8 @@ jobs:
         mkdir -p /opt/images/
     - name: Apply rainbow themes
       run: |
+        cp -f RainbowThemes/rainbowthemes.tar.xz /opt/rt-n56u/trunk/user/www
         cd /opt/rt-n56u/trunk/user/www
-        cp -f RainbowThemes/rainbowthemes.tar.xz ./
         sudo chmod +x ./rainbowthemes.tar.xz
         mkdir -p n56u_rainbow
         tar -xvf rainbowthemes.tar.xz -C n56u_rainbow
