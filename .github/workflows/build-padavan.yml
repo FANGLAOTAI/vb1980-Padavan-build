@@ -48,7 +48,7 @@ jobs:
         sed -i "s/WEBUI_NAME=n56u_ribbon_fixed/WEBUI_NAME=n56u_rainbow/g" ./Makefile
     - name: Build Firmware
       env:
-        TNAME: XY-C1
+        TNAME: NEWIFI3
         VERSION: 20200619
       run: |
         cd /opt/rt-n56u/trunk
