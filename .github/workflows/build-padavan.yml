@@ -22,7 +22,7 @@ env:
   FIRMWARE_AUTHOR: chongshengB
   FIRMWARE_PATH: /opt/firmwares
   APPLY_RAINBOWTHEME: false
-  UPLOAD_COWTRANSFER: false
+  UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: false
 jobs:
   build:
