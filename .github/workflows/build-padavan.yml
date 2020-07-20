@@ -21,7 +21,7 @@ env:
   FIRMWARE_DATEPREFIX: $(date +"%Y%m%d")
   FIRMWARE_AUTHOR: chongshengB
   FIRMWARE_PATH: /opt/firmwares
-  APPLY_RAINBOWTHEME: false
+  APPLY_RAINBOWTHEME: true
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: false
 jobs:
@@ -125,7 +125,13 @@ jobs:
       id: organize
       run: |
         cd $WORK_PATH/trunk
+        if [ "${APPLY_RAINBOWTHEME}" = "true" ]
+        then
+        mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_rainbow_3.4.3.9-099.trx"`
+        else  
         mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_3.4.3.9-099.trx"`
+        fi
+        #mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_3.4.3.9-099.trx"`
         mkdir -p $FIRMWARE_PATH/
         sudo mv -f images/*.trx $FIRMWARE_PATH/
         cd $FIRMWARE_PATH
