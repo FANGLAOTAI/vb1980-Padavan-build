@@ -22,7 +22,7 @@ env:
   FIRMWARE_AUTHOR: chongshengB
   FIRMWARE_PATH: /opt/firmwares
   APPLY_RAINBOWTHEME: false
-  UPLOAD_COWTRANSFER: true
+  UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
 jobs:
   build:
@@ -117,19 +117,21 @@ jobs:
         #########################################################################################
     - name: Build firmware
       run: |
-        cd $WORK_PATH/trunk
-        sudo ./clear_tree
-        sudo ./build_firmware_modify $TARGET_NAME 0
+        #cd $WORK_PATH/trunk
+        #sudo ./clear_tree
+        #sudo ./build_firmware_modify $TARGET_NAME 0
+        echo "::set-env name=FIRMWARE_DATEPREFIX::$(date +"%Y%m%d")"
     - name: Organize firmware files
       id: organize
       run: |
-        cd $WORK_PATH/trunk
-        mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_3.4.3.9-099.trx"`
-        mkdir -p $FIRMWARE_PATH/
-        sudo mv -f images/*.trx $FIRMWARE_PATH/
-        cd $FIRMWARE_PATH
-        echo "::set-env name=FIRMWARE::$PWD"
-        echo "::set-output name=status::success"
+        #cd $WORK_PATH/trunk
+        #mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_3.4.3.9-099.trx"`
+        #mkdir -p $FIRMWARE_PATH/
+        #sudo mv -f images/*.trx $FIRMWARE_PATH/
+        #cd $FIRMWARE_PATH
+        #echo "::set-env name=FIRMWARE::$PWD"
+        echo $FIRMWARE_DATEPREFIX
+        echo "::set-output name=status::false"
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success'
