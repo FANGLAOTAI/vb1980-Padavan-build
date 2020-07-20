@@ -35,14 +35,12 @@ jobs:
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
-      if: env.APPLY_RAINBOWTHEME == 'true'
       run: |
         sudo apt-get update
         sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
         cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
-      if: env.APPLY_RAINBOWTHEME == 'true'
       run: |
         git clone --depth=1 $REPOSITORY_URL $WORK_PATH
         cd $WORK_PATH/toolchain-mipsel
@@ -59,7 +57,6 @@ jobs:
         tar -xvf rainbowthemes.tar.xz -C n56u_rainbow
         sed -i "s/WEBUI_NAME=n56u_ribbon_fixed/WEBUI_NAME=n56u_rainbow/g" ./Makefile
     - name: Custom config
-      if: env.APPLY_RAINBOWTHEME == 'true'
       run: |
         cd $WORK_PATH/trunk
         if [ ! -f configs/templates/$TARGET_NAME.config ] ; then
@@ -127,14 +124,13 @@ jobs:
     - name: Organize firmware files
       id: organize
       run: |
-        #cd $WORK_PATH/trunk
-        #mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_3.4.3.9-099.trx"`
-        #mkdir -p $FIRMWARE_PATH/
-        #sudo mv -f images/*.trx $FIRMWARE_PATH/
-        #cd $FIRMWARE_PATH
-        #echo "::set-env name=FIRMWARE::$PWD"
-        echo $FIRMWARE_DATEPREFIX
-        echo "::set-output name=status::false"
+        cd $WORK_PATH/trunk
+        mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_K2_3.4.3.9-099.trx"`
+        mkdir -p $FIRMWARE_PATH/
+        sudo mv -f images/*.trx $FIRMWARE_PATH/
+        cd $FIRMWARE_PATH
+        echo "::set-env name=FIRMWARE::$PWD"
+        echo "::set-output name=status::success"
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success'
