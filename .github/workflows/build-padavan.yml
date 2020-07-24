@@ -130,7 +130,7 @@ jobs:
         then
         rainbow_Prefix="rainbow_"
         fi
-        mv -f images/PSG1218_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_"${rainbow_Prefix}"K2_rainbow_3.4.3.9-099.trx"`
+        mv -f images/K2P_3.4.3.9-099.trx `echo images/${FIRMWARE_DATEPREFIX}"_"${FIRMWARE_AUTHOR}"_"${rainbow_Prefix}"K2P_rainbow_3.4.3.9-099.trx"`
         mkdir -p $FIRMWARE_PATH/
         sudo mv -f images/*.trx $FIRMWARE_PATH/
         cd $FIRMWARE_PATH
