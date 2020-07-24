@@ -22,8 +22,8 @@ env:
   FIRMWARE_AUTHOR: chongshengB
   FIRMWARE_PATH: /opt/firmwares
   APPLY_RAINBOWTHEME: false
-  UPLOAD_COWTRANSFER: true
-  UPLOAD_WETRANSFER: false
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: true
 jobs:
   build:
     runs-on: ubuntu-18.04
