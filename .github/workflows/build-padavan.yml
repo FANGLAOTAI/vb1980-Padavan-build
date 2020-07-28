@@ -1,4 +1,4 @@
-name: Build Padavan
+name: K2P Build Padavan
 
 on: 
   release:
@@ -17,11 +17,11 @@ env:
   TOOLCHAIN_URL: https://github.com/hanwckf/padavan-toolchain/releases/download/v1.1/mipsel-linux-uclibc.tar.xz
   WORK_PATH: /opt/rt-n56u
   TARGET_NAME: K2P-5.0
-  FIRMWARE_VERSION: 20200619
+  FIRMWARE_VERSION: 20200728
   FIRMWARE_DATEPREFIX: $(date +"%Y%m%d")
   FIRMWARE_AUTHOR: chongshengB
   FIRMWARE_PATH: /opt/firmwares
-  APPLY_RAINBOWTHEME: false
+  APPLY_RAINBOWTHEME: true
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: true
 jobs:
